@@ -18,12 +18,12 @@ jobs:
       - name: Remove Existing Data
         run: |
           echo "Removing existing database data..."
-          npx ts-node remove_db.ts
+          npx ts-node remove_db.ts "mongodb://127.0.0.1:27017/book-api"
 
       - name: Insert Sample Data
         run: |
           echo "Inserting sample database data..."
-          npx ts-node insert_sample_db.ts
+          npx ts-node insert_sample_data.ts "mongodb://127.0.0.1:27017/book-api"
 
       - name: Run Tests
         run: npm run test
