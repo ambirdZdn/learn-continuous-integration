@@ -40,12 +40,22 @@ First setup your machine or your teammate's machine to be the self hosted runner
 - Submit a pull request to the deploy branch from main
 - Observe the actions branch in your repository.
 
-
 Answer the following questions:
 
 1. What does the __runs-on__ string  
+    runs-on: cs5500-self-hosted
+
 2. In `main.yml`, on which branch do the jest tests run when a push to main branch is made?
+    on:
+     push:
+        branches:
+            - main
+
 3. In `main.yml`, on which branch do the jest tests run when a pull request is submitted to the deploy branch?
+    on:
+    pull_request:
+        branches:
+            - deploy
 
 Next, create a new workflow yml file that captures the following continuous integration requirement:
 

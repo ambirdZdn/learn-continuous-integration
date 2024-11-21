@@ -1,0 +1,29 @@
+name: setup practice
+
+on:
+  push:
+    branches:
+      - deploy  
+
+jobs:
+  setup-db: 
+    runs-on: cs5500-self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Remove Existing Data
+        run: |
+          echo "Removing existing database data..."
+          npx ts-node remove_db.ts
+
+      - name: Insert Sample Data
+        run: |
+          echo "Inserting sample database data..."
+          npx ts-node insert_sample_db.ts
+
+      - name: Run Tests
+        run: npm run test
