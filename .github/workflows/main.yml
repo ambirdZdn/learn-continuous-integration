@@ -1,14 +1,17 @@
 name: CI Tutorial
 
 on:
+  # Run tests on push to the main branch
   push:
     branches:
       - main
 
+  # Run tests on pull requests to the deploy branch
   pull_request:
     branches:
       - deploy
 
+# Define the jobs that will run
 jobs:
   "run-jest-tests":
     runs-on: cs5500-self-hosted
